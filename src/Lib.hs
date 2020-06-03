@@ -76,3 +76,37 @@ perderPesoDiablo peso = max 0 (peso-0.1)
 enfermedadesConMenosDe10Letras :: Enfermedades -> Enfermedades
 enfermedadesConMenosDe10Letras enfermedades = filter ((<10).length) enfermedades
 
+--PUNTO 3
+
+type Medicamento = Raton -> Raton
+
+pondsAntiAge :: Medicamento
+pondsAntiAge = hierbaBuena.hierbaBuena.hierbaBuena.alcachofa
+
+reduceFatFast :: String -> Int -> Medicamento
+reduceFatFast terminacion potencia raton = (potenciaAlcachofa potencia).(hierbaVerde terminacion) $ raton 
+--tengo un problema con hirbaVerde (funciona cuando solo le paso un string de 3 caracteres)
+
+--EJEMPLOS DE CONSOLA
+{-
+*Lib Lib> hierbaVerde "dad" huesudo
+Raton {nombre = "Huesudo", edad = 4.0, peso = 10.0, enfermedades = ["sinusitis"]}
+
+*Lib Lib> hierbaVerde "idad" huesudo
+Raton {nombre = "Huesudo", edad = 4.0, peso = 10.0, enfermedades = ["obesidad","sinusitis"]}
+
+ potenciaAlcachofa 2 huesudo
+Raton {nombre = "Huesudo", edad = 4.0, peso = 8.1, enfermedades = ["obesidad","sinusitis"]}
+ME TENDRIA QUE DEVOLVER SOLO SINUSITIS (potenciaAlcachofa anda bien)
+
+-}
+potenciaAlcachofa :: Int -> (Medicamento)
+potenciaAlcachofa 1 = alcachofa
+potenciaAlcachofa potencia = alcachofa.(potenciaAlcachofa (potencia-1))
+
+sufijosInfecciosas = [ "sis", "itis", "emia", "cocos"]
+
+pdepCilina :: Medicamento
+pdepCilina raton = foldr hierbaVerde raton sufijosInfecciosas
+
+
