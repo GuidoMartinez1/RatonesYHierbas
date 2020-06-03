@@ -85,7 +85,7 @@ pondsAntiAge = hierbaBuena.hierbaBuena.hierbaBuena.alcachofa
 
 reduceFatFast :: String -> Int -> Medicamento
 reduceFatFast terminacion potencia raton = (potenciaAlcachofa potencia).(hierbaVerde terminacion) $ raton 
---tengo un problema con hirbaVerde (funciona cuando solo le paso un string de 3 caracteres)
+--tengo un problema con hierbaVerde (funciona cuando solo le paso un string de 3 caracteres)
 
 --EJEMPLOS DE CONSOLA
 {-
@@ -108,5 +108,42 @@ sufijosInfecciosas = [ "sis", "itis", "emia", "cocos"]
 
 pdepCilina :: Medicamento
 pdepCilina raton = foldr hierbaVerde raton sufijosInfecciosas
+
+--PUNTO 4
+
+cantidadIdeal :: (Int -> Bool) -> Int
+cantidadIdeal condicion = primeroEnCumplir condicion
+
+primeroEnCumplir :: (Int -> Bool) -> Int
+primeroEnCumplir condicion = head (filter condicion [1..])
+
+tieneSobrepeso :: Raton -> Bool
+tieneSobrepeso  = (>1).peso
+
+noTieneSobrepeso :: Raton -> Bool
+noTieneSobrepeso = not.tieneSobrepeso
+
+lograrEstabilizar :: [Raton] -> Medicamento ->  Bool
+lograrEstabilizar comunidadRatones medicamento = (&&) (ningunoTienenSobrepeso comunidadRatones medicamento) (todosTienenMenosDe3Enfermedades comunidadRatones medicamento)
+
+aplicarMedicamento :: [Raton] -> Medicamento -> [Raton]
+aplicarMedicamento ratones medicamento = map medicamento ratones
+
+ningunoTienenSobrepeso :: [Raton] -> Medicamento -> Bool
+ningunoTienenSobrepeso ratones medicamento = all (noTieneSobrepeso) (aplicarMedicamento ratones medicamento)
+
+tienenMenosDe3Enfermedades :: Enfermedades -> Bool
+tienenMenosDe3Enfermedades = (<3).length
+
+todosTienenMenosDe3Enfermedades :: [Raton] -> Medicamento -> Bool
+todosTienenMenosDe3Enfermedades ratones medicamento = all (tienenMenosDe3Enfermedades) (map enfermedades (aplicarMedicamento ratones medicamento))
+
+potenciasIdeales :: [Raton] -> String -> Int
+potenciasIdeales ratones terminacion
+ |lograrEstabilizar ratones (alcachofa.(hierbaVerde terminacion)) = 1
+ |otherwise= 1 + potenciasIdeales ratones terminacion
+--porque no usar reduceFatFast (no entendi bien)
+
+--PUNTO 5
 
 

@@ -14,4 +14,9 @@ main = hspec $ do
          alcachofa cerebro `shouldBe` (Raton "Cerebro" 9 0.19 ["brucelosis","sarampion","tuberculosis"])
       it "aplicar hierbaDelDiablo a cerebro" $ do
          hierbaDelDiablo cerebro `shouldBe` (Raton "Cerebro" 9 0.1 ["sarampion"])
-         
+   
+   describe "PUNTO 4" $ do
+      it "cantidadIdeal even" $ do
+         cantidadIdeal even `shouldBe` 2
+      it "cantidadIdeal (>5)" $ do
+         cantidadIdeal (>5) `shouldBe` 6
