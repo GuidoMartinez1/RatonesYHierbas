@@ -155,12 +155,35 @@ a) No se sabrá si todos los ratones quedan con menos de 1 kg y sin enfermedades
 tener una lista infinita y un metodo de evaluacion "all" Haskell no nos puede mostrar un 
 resultado hasta que no termine de evaluar (al ser infinita no termina nunca de evaluar)
 
-b)En el caso que un raton quede con 2kg y 4 enfermedades, esta vez si, nos va a devolver un False. 
+b) En el caso que un raton quede con 2kg y 4 enfermedades, esta vez si, nos va a devolver un False. 
 Siempre que encuentre algun elemento en la lista que lo cumpla. Si no cumple ninguno
 seguirá evaluando infinitamente por el "all" previamente mencionado. 
 
 -}
 
+--PUNTO 6
+{-Responder en base al ejercicio
+a. ¿Qué cambios debería hacer para agregar una
+nueva hierba y construir un medicamento con ella? ¿Habría que modificar las funciones
+existentes?
+b. ¿Qué concepto está involucrado en la pregunta anterior? ¿Para qué sirve en este caso?
+c. Si se cambia el modelo del ratón, por ejemplo, ahora queremos que se registre el
+peso de un ratón siempre en libras. ¿Qué funciones habría que modificar?
+
+a) No tendría que hacer ningun cambio. Ya que ninguna hierba necesita de otra para funcionar
+Todas las hierbas realizan cambios directamente en los ratones. Como realicé funciones
+generales que dado un raton y una funcion (a libre interpretacion del programador) modifique
+el campo solicitado del ratón, éstas (funciones) no afectan al funcionamiento de las hierbas ya existentes
+
+b) Está involucrado el concepto de orden superior. Sirve para poder abstraer un problema grande en problemas 
+mas chicos y pensar solamente en que funcion necesitamos para modificar un simple campo de un Raton.
+Además éste concepto nos ayuda cuando la funcion necesite mas de un parametro, ésta se aplica parcialmente
+al parámetro faltante.
+
+c) Si quiero registrar el peso en libras, no me cambiaria en absoluto ninguna función.
+Ya que en el modelado del Raton establecí que el tipo de dato de peso es Float. Y tanto
+la libra como el Kilogramo puede utilizar el mismo tipo de dato.
+-}
 
 
 
