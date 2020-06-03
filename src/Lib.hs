@@ -145,5 +145,23 @@ potenciasIdeales ratones terminacion
 --porque no usar reduceFatFast (no entendi bien)
 
 --PUNTO 5
+{-Queremos saber si un medicamento logra estabilizar una comunidad infinita . ¿Podemos saberlo?
+Responder en estos dos casos:
+a. Si todos los ratones quedan con menos de 1kg y
+sin enfermedades. Justificar.
+b. Si un ratón queda con 2kg  y 4 enfermedades.
+
+a) No se sabrá si todos los ratones quedan con menos de 1 kg y sin enfermedades, porque al
+tener una lista infinita y un metodo de evaluacion "all" Haskell no nos puede mostrar un 
+resultado hasta que no termine de evaluar (al ser infinita no termina nunca de evaluar)
+
+b)En el caso que un raton quede con 2kg y 4 enfermedades, esta vez si, nos va a devolver un False. 
+Siempre que encuentre algun elemento en la lista que lo cumpla. Si no cumple ninguno
+seguirá evaluando infinitamente por el "all" previamente mencionado. 
+
+-}
+
+
+
 
 
