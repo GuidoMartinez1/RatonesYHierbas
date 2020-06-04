@@ -41,7 +41,8 @@ enfermedadesSinCiertaTerminacion :: String -> Enfermedades -> Enfermedades
 enfermedadesSinCiertaTerminacion terminacion = filter (noTerminaEn terminacion)
 
 noTerminaEn :: String -> String->  Bool
-noTerminaEn terminacion enfermedad = (/=) terminacion (take (length terminacion) (reverse enfermedad))
+noTerminaEn terminacion enfermedad = (/=) (reverse terminacion) (take (length terminacion) (reverse enfermedad))
+
 
 alcachofa :: Hierba
 alcachofa = modificarPeso perderPeso
